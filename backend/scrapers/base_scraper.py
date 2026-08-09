@@ -8,5 +8,7 @@ class BaseScraper:
         return self._page
 
     async def close(self):
-        await self._browser.close()
-        await self._pw.stop()
+        try:
+            await self._browser.close()
+        finally:
+            await self._pw.stop()
