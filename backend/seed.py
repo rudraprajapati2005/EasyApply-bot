@@ -3,7 +3,7 @@ import os
 
 from backend.db import AsyncSessionLocal ,engine ,Base
 from backend.models import Company
-
+from backend.companies_list import companies_list
 async def create_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -11,7 +11,7 @@ async def create_tables():
 async def seed():
     await create_tables()
     async with AsyncSessionLocal() as session:
-        companies = []
+        companies = companies_list
 
     for c in companies:
         existing = await session.execute(
