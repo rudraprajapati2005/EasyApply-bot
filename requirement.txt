@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+playwright
+sqlalchemy
+asyncpg
+python-dotenv
+pydantic
+aiohttp
+alembic
+redis
+rq
