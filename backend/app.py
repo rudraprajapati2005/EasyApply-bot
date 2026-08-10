@@ -7,6 +7,11 @@ from fastapi import FastAPI, BackgroundTasks, HTTPException
 from .scrapers.generic_scraper import GenericScraper
 from .crud import save_job_if_new, list_jobs, get_company
 from .db import AsyncSessionLocal
+import asyncio
+import sys
+
+if sys.platform.startswith("win"):
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 app = FastAPI(title="JobBot MVP API")
 scraper = GenericScraper()

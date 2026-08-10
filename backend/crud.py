@@ -15,12 +15,12 @@ async def save_job_if_new(company_id : int , url:str , raw : dict):
         await session.refresh(job)
         return job
 
-    async def list_jobs(limit : int = 100):
-        async with AsyncSessionLocal() as session:
+async def list_jobs(limit : int = 100):
+    async with AsyncSessionLocal() as session:
             q= await session.execute(select(Job).order_by(Job.scraped_at.desc()).limit(limit))
             return q.scalars().all()
 
-    async def get_company(company_id : int):
+async def get_company(company_id : int):
         async with AsyncSessionLocal() as session:
             return await session.get(Company , company_id)
 

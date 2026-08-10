@@ -1,8 +1,8 @@
-from playwright.async_api import aync_playwright
+from playwright.async_api import async_playwright
 
 class BaseScraper:
     async def open(self , headless = True):
-        self._pw = await aync_playwright().start()
+        self._pw = await async_playwright().start()
         self._browser = await self._pw.chromium.lauch(headless=headless)
         self._page = await self._browser.new_page()
         return self._page
